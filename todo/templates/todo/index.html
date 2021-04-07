@@ -1,0 +1,37 @@
+{% extends 'todo/base.html' %} 
+
+{% block title %}
+Simple. Clean. Todolist 
+{% endblock %}
+
+{% block body %}
+
+{% if request.user.is_authenticated %}
+
+    <ol>
+        {% for todo in todolist%}
+
+            <li>{{todo.content}}</li>
+
+        {% empty %}
+            <li>No tasks yet</li>
+
+        {% endfor %}
+    </ol>
+
+    <a href="{% url 'add' %}">Add tasks</a>
+
+{% else %}
+
+<p>
+    Login <a href="{% url 'login' %}">here</a>
+  
+</p>
+
+<p>
+    Signup <a href="{% url 'signup' %}">here</a>
+</p>
+
+{% endif %}
+
+{% endblock %}

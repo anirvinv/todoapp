@@ -1,0 +1,17 @@
+{% extends 'todo/base.html' %}
+
+{% block body %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    Username: <input type="text" name="username" placeholder="Username">
+    Password: <input type="password" name="password" placeholder="Password">
+    <input type="submit" value="Login">
+</form>
+
+<p>
+    Don't have an account? Signup <a href="{% url 'signup'%}">here</a>
+
+</p>
+
+{% endblock %}

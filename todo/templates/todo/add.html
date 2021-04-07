@@ -1,0 +1,21 @@
+{% extends "todo/base.html" %}
+
+
+{% block body %} 
+
+<h1>Add Tasks</h1>
+
+
+<form action="#" method="post">
+    {% csrf_token %}
+     
+    {{form}}
+    
+    <input type="submit">
+</form>
+
+<a href="{% url 'index' %}">Index</a>
+
+<a href="{% url 'logout' %}">Logout</a>
+
+{%endblock%}
