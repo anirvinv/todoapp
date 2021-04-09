@@ -6,22 +6,32 @@ from django.urls import reverse
 from django.contrib.auth import  authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import User, Todo
+from django.db import IntegrityError
 
 # Create your views here.
 
+@login_required(login_url="login")
 def index(request):
-    user = authenticate(request.user)
+    # user = authenticate(username=request.user.username, password=request.user.password)
+    user = request.user
     if user:
+        # username = user.username
+        # user = User.objects.get(username=username)
+        # return HttpResponse(f"{user.todo.all()}")
         return render(request, 'todo/index.html', context={
-            "todolist": request.user.todo.all()
+            "todolist": user.todo.all()
         })
+    # s = request.user.todo
+    # return HttpResponse(f"{s.first()}")
     return render(request, 'todo/index.html')
 
 
 def log_in(request):
     if request.method =="POST":
+        
+
         username = request.POST['username']
-        password = request.POST['password']
+        password = password=request.POST['password']
 
         try:
             user = User.objects.get(username=username)
@@ -33,14 +43,15 @@ def log_in(request):
             login(request, user)
             return HttpResponseRedirect(reverse('index'))
         else:
-            return render(request, 'todo/login.html')
+            return HttpResponse(f"{user.password}")
+            # return render(request, 'todo/login.html')
 
     return render(request, 'todo/login.html')
 
 
 def log_out(request):
     logout(request)
-    return render(request, 'todo/login.html')
+    return HttpResponseRedirect(reverse('login'))
 
 
 def sign_up(request):
@@ -50,20 +61,26 @@ def sign_up(request):
         confirm_passowrd = request.POST['confirm_password']
         
         if password == confirm_passowrd:
-            user = User.objects.create(username=username, password=password)
-            HttpResponseRedirect(reverse('login'))
+            try:
+                user = User.objects.create(username=username, password=password)
+            except IntegrityError:
+                context = {
+                "message":"Username is already taken."
+                }
+                return render(request, 'todo/signup.html', context=context)
+            return HttpResponseRedirect(reverse('login'))
         else:
             context = {
                 "message":"Passwords did not match, please make sure that both fields have the same text."
             }
-            render(request, 'todo/signup.html', context=context)
+            return render(request, 'todo/signup.html', context=context)
 
     return render(request, 'todo/signup.html', context={
         'message':""
     })
 
 
-@login_required(login_url="todo/login.html")
+@login_required(login_url='login')
 def add(request):
     class TodoForm(forms.Form):
         todo = forms.CharField(required=True)

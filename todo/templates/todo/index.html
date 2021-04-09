@@ -9,7 +9,7 @@ Simple. Clean. Todolist
 {% if request.user.is_authenticated %}
 
     <ol>
-        {% for todo in todolist%}
+        {% for todo in todolist %}
 
             <li>{{todo.content}}</li>
 
@@ -20,6 +20,10 @@ Simple. Clean. Todolist
     </ol>
 
     <a href="{% url 'add' %}">Add tasks</a>
+    
+    <p>
+        <a href="{% url 'logout' %}">Logout</a>
+    </p>
 
 {% else %}
 
@@ -31,6 +35,8 @@ Simple. Clean. Todolist
 <p>
     Signup <a href="{% url 'signup' %}">here</a>
 </p>
+
+
 
 {% endif %}
 

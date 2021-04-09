@@ -106,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Authentication backends
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
