@@ -10,8 +10,15 @@ Simple. Clean. Todolist
 
     <ol>
         {% for todo in todolist %}
-
-            <li>{{todo.content}}</li>
+            <li><div class="content">{{todo.content}} 
+                <form action="" method='post'>
+                    {% csrf_token %}
+                    <input type="text" value="{{todo.pk}}" name="key" style="opacity: 0;" readonly >
+                    <button type='submit'>Remove</button>
+                </form>
+                </div>
+            </li>
+            
 
         {% empty %}
             <li>No tasks yet</li>

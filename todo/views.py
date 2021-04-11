@@ -13,6 +13,12 @@ from django.db import IntegrityError
 @login_required(login_url="login")
 def index(request):
     # user = authenticate(username=request.user.username, password=request.user.password)
+
+    if request.method=="POST":
+        key = request.POST['key']
+        request.user.todo.get(pk=key).delete()
+        return HttpResponseRedirect(reverse('index'))
+
     user = request.user
     if user:
         # username = user.username
