@@ -8,6 +8,8 @@ Simple. Clean. Todolist
 
 {% if request.user.is_authenticated %}
 
+<div class="header">{{request.user.username.upper}}'s Tasks</div>
+
     <ol>
         {% for todo in todolist %}
             <li><div class="content">{{todo.content}} 
@@ -18,25 +20,24 @@ Simple. Clean. Todolist
                 </form>
                 </div>
             </li>
-            
 
         {% empty %}
             <li>No tasks yet</li>
-
         {% endfor %}
     </ol>
 
-    <a href="{% url 'add' %}">Add tasks</a>
-    
-    <p>
+    <div class="add-logout">
+        <a href="{% url 'add' %}">Add tasks</a>
+    </div>
+        
+    <div class="add-logout">
         <a href="{% url 'logout' %}">Logout</a>
-    </p>
 
+    </div>
+            
 {% else %}
-
 <p>
     Login <a href="{% url 'login' %}">here</a>
-  
 </p>
 
 <p>
@@ -44,7 +45,5 @@ Simple. Clean. Todolist
 </p>
 
 
-
 {% endif %}
-
 {% endblock %}

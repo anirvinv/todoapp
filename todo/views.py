@@ -89,7 +89,7 @@ def sign_up(request):
 @login_required(login_url='login')
 def add(request):
     class TodoForm(forms.Form):
-        todo = forms.CharField(required=True)
+        todo = forms.CharField(required=True, widget=forms.TextInput(attrs={'autofocus': ''}))
     
     if request.method=="POST":
         form = TodoForm(request.POST)

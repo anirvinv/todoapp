@@ -2,10 +2,12 @@
 
 {% block body %} 
 
+<p>Welcome {{request.user.username.upper}}!</p>
+
 <h1>Add Tasks</h1>
 
 
-<form action="#" method="post">
+<form id="add-form" action="#" method="post">
     {% csrf_token %}
      
     {{form}}
@@ -13,8 +15,12 @@
     <input type="submit">
 </form>
 
-<a href="{% url 'index' %}">Index</a>
+<div class="add-logout">
+    <a href="{% url 'index' %}">Index</a>
+</div>
 
-<a href="{% url 'logout' %}">Logout</a>
+<div class="add-logout">
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
 
 {%endblock%}

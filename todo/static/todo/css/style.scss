@@ -2,23 +2,182 @@
 
 body{
     font-family: 'Comfortaa', cursive;
-    background-color: bisque;
+    background-color: #e2a156;
+    color: white;
+    margin: 20px;
+}
+.header{
+    text-align: center;
+    font-size: 30px;
+    margin: 30px;
+    padding: 20px;
+    border: 2px dashed white;
+
 }
 
 .content{
+    transform-origin: 10% 10%;
+    border-radius: 20px;
+    overflow: auto;
+    color: white;
     position: relative;
     width: 400px;
     height: 100px;
     padding: 20px;
     border: 2px solid white;
-    margin: 2px;
+    margin-top: 20px;
+    margin-left: 15px;
+    transition: color 0.2s, background-color 0.3s, transform 0.3s;
     button{
+       font: inherit;
        position: absolute;
+       color: #e2a156;
        top: 100px;
        right: 50px; 
        outline: none;
        background-color: white;
        border-width: 1px;
-       border-color: gray;
+       border-color: #e2a156;
+       transition: color 0.2s, background-color 0.3s;
     }
+    button:hover{
+        cursor: pointer;
+        background-color: rgb(54, 46, 46);
+        color: white;
+    }
+}
+
+
+.content:hover{
+    background-color: beige;
+    color: black;
+    transform: rotate(4deg);
+}
+.add-logout{
+    margin: 39px;
+    padding: 10px;
+    width: fit-content;
+    border: solid 2px white;
+    transition: background-color 0.3s;
+    a{
+        color: white;
+        margin-right: 30px;
+        transition: color 0.3s;
+        
+    }
+
+}
+.add-logout:hover{
+    background-color: white;
+    a{
+        color: #e2a156;
+    }
+    
+}
+
+
+#id_todo{
+    outline: none;
+    margin-bottom: 50px;
+}
+
+#add-form{
+    input[type=text]{
+        font-family: 'Comfortaa';
+        height: 17px;
+        width: 300px;
+    }
+    input[type="submit"]{
+        background-color: white;
+        border: 1px;
+        font: inherit;
+        padding: 3px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+    input[type="submit"]:hover{
+        background-color: rgb(66, 66, 66);
+        color: white;
+        cursor: pointer;
+    }
+}
+
+#login-form{
+    input[type=text], input[type=password]{
+        font-family: 'Comfortaa';
+        height: 17px;
+        width: 300px;
+        outline: none;
+        margin-top: 25px;
+    }
+    input[type="submit"]{
+        background-color: white;
+        border: 1px;
+        font: inherit;
+        padding: 3px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+    input[type="submit"]:hover{
+        background-color: rgb(66, 66, 66);
+        color: white;
+        cursor: pointer;
+    }
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    color: rgb(88, 88, 88);
+    background-color: rgb(255, 228, 154);
+    padding: 40px;
+    border-radius: 40px;
+    p{
+        a{
+            color: gray;
+        }
+        a:hover{
+            color: rgb(156, 156, 156);
+        }
+    }
+}
+
+.signup-form{
+    input[type=text], input[type=password]{
+        font-family: 'Comfortaa';
+        height: 17px;
+        width: 300px;
+        outline: none;
+        margin-top: 25px;
+    }
+    input[type="submit"]{
+        background-color: white;
+        border: 1px;
+        font: inherit;
+        padding: 3px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+    input[type="submit"]:hover{
+        background-color: rgb(66, 66, 66);
+        color: white;
+        cursor: pointer;
+    }
+    color: rgb(88, 88, 88);
+    background-color: rgb(255, 228, 154);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    padding: 40px;
+    border-radius: 40px;
+
+    p{
+        a{
+            color: gray;
+        }
+        a:hover{
+            color: rgb(156, 156, 156);
+        }
+    }
+}
+.integrity-error{
+    width: fit-content;
+    margin: auto;
 }

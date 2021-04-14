@@ -3,8 +3,12 @@
 {% block title %}Regiester here | Todoapp{% endblock %}
 
 {% block body %}
-{{message}}
+<div class="integrity-error">
+  {{message}}
+</div>
 
+<div class="signup-form">
+  <h3>Sign up! </h3>
 <form action="" method='post'>
   {% csrf_token %}
   <p>Username: <input type="text" placeholder="Username" name="username"></p>
@@ -14,5 +18,7 @@
 </form>
 
 <p>Already have an acount? Login <a href="{% url 'login' %}">here</a></p>
+
+</div>
 
 {% endblock %}
